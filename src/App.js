@@ -4,13 +4,18 @@ import React from 'react';
 
 import './App.css';
 
-import Header from "./Header"
+// import Header from "./Header"
+
+import UnorderedList from './Unordered-list';
+
+import LifeCycle from './Life-cycle';
 
 
 class MyCar extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       firstName: "Nikhil",
       age: 37
@@ -26,12 +31,17 @@ class MyCar extends React.Component {
     return (
       <div>
         <hr></hr>
+        <h1> MyCar Component</h1>
         <h2>Child Component</h2>
         <div>
           car color is : {this.props.cars.color}
         </div>
         <div>My name is {this.state.firstName} and age {this.state.age}</div>
         <button onClick={this.changeAge}>Change age</button>
+
+        <hr></hr>
+
+        <UnorderedList></UnorderedList>
 
       </div>
     )
@@ -52,6 +62,9 @@ function App() {
 
   const [count, setCount] = useState(0);
 
+
+  const [person, setPerson] = useState({firstName:"Nikhil", lastName:"Shah"})
+
   const incrementCounter = () => {
     // count = count + 1;
 
@@ -61,14 +74,15 @@ function App() {
 
   const changeColor = () => {
 
-    setCar({ color: "blue", company: "ford" })
+    setCar({ color: "blue" })
 
   }
 
   return (
     <div>
 
-      <h1> Update Counter </h1>
+     <h1> App Component</h1>
+      <h2> Update Counter </h2>
 
       <h2> Counter: {count}</h2>
 
@@ -76,6 +90,8 @@ function App() {
       <button onClick={changeColor}>Change Color</button>
 
       <MyCar cars={car}></MyCar>
+
+      <LifeCycle person={person}></LifeCycle>
 
     </div>
   );
